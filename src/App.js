@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Loadable from 'react-loadable';
+import { LocaleProvider } from 'antd';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import Loading from './layouts/Loading';
+import Menu from './layouts/Menu';
+
+// 动态加载函数
+const load = loader => Loadable({ loader, loading: Loading });
+
+const List = load(() => import('./containers/List'));
+const Me = load(() => import('./containers/Me'));
+const Article = load(() => import('./containers/Article'));
+
+
+const App = () => (
+  <Router>
+    <LocaleProvider locale={zhCN}>
+      <Menu>
+        <Switch>
+          <Route exact path="/" component={List} />
+          <Route exact path="/aboutme" component={Me} />
+          <Route exact path="/articles/:id" component={Article} />
+        </Switch>
+      </Menu>
+    </LocaleProvider>
+  </Router>
+);
+
 
 export default App;
