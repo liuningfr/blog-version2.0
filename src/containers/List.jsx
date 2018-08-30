@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actions } from '../reducers/blog';
-import ArticlesList from '../components/ArticlesList';
+import { actions } from '@/reducers/blog';
+import ArticlesList from '@/components/ArticlesList';
 
 class List extends React.Component {
   componentDidMount() {

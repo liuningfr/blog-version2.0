@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actions } from '../reducers/blog';
+import { actions } from '@/reducers/blog';
 
 class Me extends React.Component {
   componentDidMount() {

@@ -4,8 +4,8 @@ import Loadable from 'react-loadable';
 import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 
-import Loading from './layouts/Loading';
-import Menu from './layouts/Menu';
+import Loading from '@/layouts/Loading';
+import Menu from '@/layouts/Menu';
 
 // 动态加载函数
 const load = loader => Loadable({ loader, loading: Loading });

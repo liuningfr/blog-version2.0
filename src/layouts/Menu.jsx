@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import { withRouter } from 'react-router-dom';
+import styles from './Menu.scss';
 
 class TopMenu extends React.Component {
   handleClick = (e) => {
@@ -16,6 +17,7 @@ class TopMenu extends React.Component {
         <Menu
           selectedKeys={['mail']}
           mode="horizontal"
+          className={styles.menu}
           onClick={this.handleClick}>
           <Menu.Item key="/">
             <Icon type="book" />
