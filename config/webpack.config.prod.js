@@ -212,6 +212,19 @@ module.exports = {
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
+          {
+            test:/\.scss$/,
+            use: ['style-loader',{
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                camelCase: 'dashes',
+                sourceMap: true,
+              }
+            },'sass-loader'],
+          },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules
@@ -226,10 +239,6 @@ module.exports = {
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
-          },
-          {
-            test:/\.scss$/,
-            loaders:['style-loader','css-loader','sass-loader']
           },
           // ** STOP ** Are you adding a new loader?
           // Make sure to add the new loader(s) before the "file" loader.

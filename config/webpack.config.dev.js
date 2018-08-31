@@ -188,6 +188,19 @@ module.exports = {
               },
             ],
           },
+          {
+            test:/\.scss$/,
+            use: ['style-loader',{
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                camelCase: 'dashes',
+                sourceMap: true,
+              }
+            },'sass-loader'],
+          },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
@@ -203,10 +216,6 @@ module.exports = {
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
-          },
-          {
-            test:/\.scss$/,
-            loaders:['style-loader','css-loader','sass-loader']
           },
         ],
       },
