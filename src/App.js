@@ -5,7 +5,7 @@ import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 
 import Loading from '@/layouts/Loading';
-import Menu from '@/layouts/Menu';
+import BasicLayout from '@/layouts/BasicLayout';
 
 // 动态加载函数
 const load = loader => Loadable({ loader, loading: Loading });
@@ -18,13 +18,13 @@ const Article = load(() => import('./containers/Article'));
 const App = () => (
   <Router>
     <LocaleProvider locale={zhCN}>
-      <Menu>
+      <BasicLayout>
         <Switch>
           <Route exact path="/" component={List} />
-          <Route exact path="/aboutme" component={Me} />
+          <Route exact path="/me" component={Me} />
           <Route exact path="/articles/:id" component={Article} />
         </Switch>
-      </Menu>
+      </BasicLayout>
     </LocaleProvider>
   </Router>
 );

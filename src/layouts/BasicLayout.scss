@@ -1,0 +1,26 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+  }
+  li {
+    margin-left: 40px;
+    margin-right: 40px;
+    a {
+      color: rgba(#000, .5);
+      &:hover,
+      &:global(.active) {
+        color: rgba(#000, .8);
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

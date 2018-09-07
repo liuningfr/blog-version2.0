@@ -1,0 +1,13 @@
+.list {
+  a {
+    font-size: 18px;
+    color: rgba(#000, .5);
+    &:hover,
+    &.active {
+      color: rgba(#000, .8);
+    }
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
