@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actions } from '@/reducers/article';
+import getState from '@/utils/getState';
+import getActions from '@/utils/getActions';
+import article from '@/store/article/detail';
 import Article from '@/components/Article';
 
 class ArticleDetail extends React.Component {
@@ -11,28 +13,13 @@ class ArticleDetail extends React.Component {
 
   render() {
     const { detail } = this.props;
-
     return (
       <Article dataSouce={detail} />
     );
   }
 }
 
-const mapStateToProps = (state) => (
-  {
-    detail: state.articleReducer.detail,
-  }
-);
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    getArticle: (id) => {
-      dispatch(actions.getArticle(id));
-    },
-  }
-);
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  getState('article'),
+  getActions(article),
 )(ArticleDetail);

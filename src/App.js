@@ -1,9 +1,9 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { LocaleProvider } from 'antd';
-import zhCN from 'antd/lib/locale-provider/zh_CN';
+import { Provider } from 'react-redux';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
+import store from '@/store';
 import Loading from '@/layouts/Loading';
 import BasicLayout from '@/layouts/BasicLayout';
 
@@ -16,8 +16,8 @@ const Article = load(() => import('./containers/Article'));
 
 
 const App = () => (
-  <Router>
-    <LocaleProvider locale={zhCN}>
+  <Provider store={store}>
+    <Router>
       <BasicLayout>
         <Switch>
           <Route exact path="/" component={List} />
@@ -25,8 +25,8 @@ const App = () => (
           <Route exact path="/articles/:id" component={Article} />
         </Switch>
       </BasicLayout>
-    </LocaleProvider>
-  </Router>
+    </Router>
+  </Provider>
 );
 
 

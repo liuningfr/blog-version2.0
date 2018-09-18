@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actions } from '@/reducers/blog';
+import getState from '@/utils/getState';
+import getActions from '@/utils/getActions';
+import blog from '@/store/blog/list';
 
 class Me extends React.Component {
   componentDidMount() {
@@ -19,22 +21,7 @@ class Me extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => (
-  {
-    name: state.blogReducer.name,
-  }
-);
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    initUser: () => {
-      dispatch(actions.initUser());
-    },
-  }
-);
-
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  getState('blog'),
+  getActions(blog),
 )(Me);

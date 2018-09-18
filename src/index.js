@@ -1,24 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { Provider } from 'react-redux';
+import { LocaleProvider } from 'antd';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
 import App from './App';
-import blogReducer from './reducers/blog';
-import articleReducer from './reducers/article';
 import './index.css';
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  combineReducers({ blogReducer, articleReducer }),
-  composeEnhancers(applyMiddleware(thunk)),
-);
 
 const render = Component => {
   ReactDOM.render(
-    <Provider store={store}>
+    <LocaleProvider locale={zhCN}>
       <Component />
-    </Provider>,
+    </LocaleProvider>,
     document.getElementById('root'),
   );
 };
