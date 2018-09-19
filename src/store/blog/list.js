@@ -18,7 +18,7 @@ const setState = data => dispatch => { dispatch({ type: SET_STATE, ...data }); }
 // actions
 const actions = {
   initList: () => async dispatch => {
-    await fetch('/list').then(response => response.json()).then(result => {
+    await fetch('/api/list').then(response => response.json()).then(result => {
       const data = result || [];
       dispatch(setState({ list: data }));
     }).catch(err => console.log(err));
